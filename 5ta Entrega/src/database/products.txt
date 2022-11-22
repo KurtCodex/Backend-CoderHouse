@@ -1,0 +1,10 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Cerveza miller",
+      "price": 250,
+      "thumbnail": "uploads/miller.png"
+    }
+  ]
+}
