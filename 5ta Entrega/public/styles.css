@@ -17,7 +17,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #252525;  
+  background-color: #252525;
   color: #ffffff;
   padding: 0 32px;
 }
@@ -95,12 +95,22 @@ header {
   margin-top: 16px;
 }
 
+.about-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  padding-top: 120px;
+}
+
 @media (max-width: 1200px) {
   .beers-container {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-  
+
 @media (max-width: 900px) {
   .beers-container {
     grid-template-columns: repeat(2, 1fr);

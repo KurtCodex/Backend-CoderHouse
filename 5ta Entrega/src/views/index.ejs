@@ -1,0 +1,16 @@
+<%- include('./layouts/header.ejs')%>
+  <div class="container">
+    <div class="beers-container">
+      <% beers.forEach(element=> { %>
+        <div class="beer-card">
+          <div class="beer-img">
+            <img src="<%= element.thumbnail.replace('public/', '') %>" alt="beer">
+          </div>
+          <div class="beer-title">
+            <%= element.name %>: $<%= element.price %>
+          </div>
+        </div>
+        <% }) %>
+    </div>
+  </div>
+  <%- include('./layouts/footer.ejs')%>

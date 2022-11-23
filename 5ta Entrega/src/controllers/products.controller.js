@@ -1,5 +1,24 @@
 import { Contenedor } from "../models/products.model.js";
 
+// API NO REST METHODS
+export const renderIndex = (req, res) => {
+    const contenedor = new Contenedor();
+
+    contenedor.getAll().then((data) => {
+        res.status(200).render("index", { beers: data });
+    }).catch((err) => {
+        res.status(500).render("error", { errorCode: 500, errorMessage: 'Internal Server Error' });
+    });
+};
+
+export const renderAbout = (req, res) => {
+    res.render("about");
+};
+
+
+
+
+// API REST METHODS
 export const index = async (req, res) => {
     const contenedor = new Contenedor();
 
@@ -93,6 +112,32 @@ export const update = async (req, res) => {
                 res.status(200).json({
                     message: "Product updated",
                     id,
+                });
+            })
+            .catch((err) => {
+                res.status(500).json({
+                    message: "Internal Server Error",
+                    error: err,
+                });
+            });
+    } else {
+        res.status(400).json({
+            message: "Bad Request, missing id",
+        });
+    }
+};
+
+export const destroy = async (req, res) => {
+    const { id } = req.params;
+
+    if (id) {
+        const contenedor = new Contenedor();
+
+        contenedor
+            .deleteByID(id)
+            .then(() => {
+                res.status(200).json({
+                    message: "Product deleted",
                 });
             })
             .catch((err) => {

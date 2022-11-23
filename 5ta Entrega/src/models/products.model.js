@@ -69,6 +69,10 @@ export class Contenedor {
                     let product = parseData.products.find((e) => e.id == id);
 
                     if (product) {
+                        fs.rmSync(`./${product.thumbnail}`, {
+                            force: true,
+                        });
+
                         product = {
                             ...product,
                             ...formData,
@@ -98,6 +102,36 @@ export class Contenedor {
         });
     }
 
+    async deleteByID(id) {
+        return new Promise((resolve, reject) => {
+            fs.promises
+                .readFile(file, "utf-8")
+                .then((data) => {
+                    const parseData = JSON.parse(data);
+                    let product = parseData.products.find((e) => e.id == id);
 
+                    if (product) {
+                        fs.rmSync(`./${product.thumbnail}`, {
+                            force: true,
+                        });
 
+                        parseData.products = parseData.products.filter((e) => e.id != id);
+
+                        fs.promises
+                            .writeFile(file, JSON.stringify(parseData, null, 2))
+                            .then(() => {
+                                resolve(product.id);
+                            })
+                            .catch((err) => {
+                                reject(err);
+                            });
+
+                        resolve("Product deleted");
+                    }
+                })
+                .catch((err) => {
+                    reject(err);
+                });
+        });
+    }
 }
