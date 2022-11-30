@@ -1,0 +1,12 @@
+<div class="beers-container">
+    <% beers.forEach(beer=> { %>
+        <div class="beer-card">
+            <div class="beer-img">
+                <img src="<%= beer.thumbnail.replace('public/', '') %>" alt="beer">
+            </div>
+            <div class="beer-title">
+                <%= beer.name %>: $<%= beer.price %>
+            </div>
+        </div>
+        <% }) %>
+</div>
