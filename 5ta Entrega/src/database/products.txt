@@ -5,6 +5,12 @@
       "name": "Cerveza miller",
       "price": 250,
       "thumbnail": "public/images/miller.png"
+    },
+    {
+      "id": 2,
+      "name": "Stella",
+      "price": 200,
+      "thumbnail": "../../public/images/miller.png"
     }
   ]
 }

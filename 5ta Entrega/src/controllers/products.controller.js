@@ -67,7 +67,6 @@ export const show = async (req, res) => {
 
 export const create = async (req, res) => {
     const { name, price } = req.body;
-    const { path } = req.file;
 
     const contenedor = new Contenedor();
 
@@ -75,7 +74,7 @@ export const create = async (req, res) => {
         .save({
             name: name,
             price: parseFloat(price),
-            thumbnail: path,
+            thumbnail: "../../public/images/miller.png"
         })
         .then((id) => {
             res.status(200).json({

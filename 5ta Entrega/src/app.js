@@ -5,6 +5,9 @@ import morgan from "morgan";
 import products from "./routes/products.routes.js";
 
 const app = express();
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
+
 
 app.set("port", 8080);
 app.use(morgan("dev"));
